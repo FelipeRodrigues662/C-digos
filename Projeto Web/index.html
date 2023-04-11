@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="./Css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" id="login-btn">Entrar</button>
+            <div class="signup-link">
+              <span>Ainda não tem uma conta?</span>
+              <a href="./cadastro.html">Criar uma conta</a>
+            </div>
+        </form>
+    </div>
+    <div class="popup hidden" id="success-popup">
+        <p>Parabéns, você fez login!</p>
+    </div>
+    <script src="./Js/script.js"></script>
+</body>
+</html>

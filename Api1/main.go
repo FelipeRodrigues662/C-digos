@@ -2,19 +2,19 @@ package main
 
 import (
 	"log"
-	"net/http"
 
-	"github.com/FelipeRodrigues662/ApiRestGo/api"
-	"github.com/FelipeRodrigues662/ApiRestGo/database"
+	api "new.com/events/Api"
+	database "new.com/events/Database"
 )
 
 func main() {
 	// Inicialização da conexão com o banco de dados
-	database.InitDatabase()
+	dsn := "sqlserver://sa:543219876Dk@localhost:1433?database=Api"
+	db, err := database.InitDatabase(dsn)
+	if err != nil {
+		log.Fatalf("Error initializing database: %v", err)
+	}
 
 	// Inicialização do roteador da API
-	router := api.NewRouter()
-
-	// Inicialização do servidor HTTP
-	log.Fatal(http.ListenAndServe(":8000", router))
+	api.StartRouter(db.DB)
 }

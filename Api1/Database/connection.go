@@ -2,9 +2,10 @@ package database
 
 import (
 	"fmt"
-	"log"
 
-	"gorm.io/driver/mysql"
+	models "new.com/events/Models"
+
+	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 )
 
@@ -13,17 +14,17 @@ type Connection struct {
 	DB *gorm.DB
 }
 
-// Connect realiza a conexão com o banco de dados
-func Connect(dsn string) (*Connection, error) {
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+// InitDatabase realiza a conexão com o banco de dados e executa as migrações
+func InitDatabase(dsn string) (*Connection, error) {
+	db, err := gorm.Open(sqlserver.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return nil, fmt.Errorf("error connecting to database: %w", err)
 	}
 
-	// Migrate as tabelas
+	// Executar as migrações
 	err = db.AutoMigrate(&models.User{})
 	if err != nil {
-		log.Fatalf("Error migrating tables: %v", err)
+		return nil, fmt.Errorf("error migrating tables: %w", err)
 	}
 
 	return &Connection{DB: db}, nil

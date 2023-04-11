@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./Css/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro</h1>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" id="sobrenome" name="sobrenome" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="confirm-password">Confirme sua senha:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            <label for="genero">Gênero:</label>
+            <select id="genero" name="genero" required>
+                <option value="">Selecione...</option>
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+                <option value="nao-binario">Não-binário</option>
+            </select>
+            <input type="checkbox" id="termos" name="termos" required>
+            <label for="termos">Eu concordo com os termos e condições.</label>
+            <input type="checkbox" id="novidades" name="novidades">
+            <label for="novidades">Eu desejo receber novidades.</label>
+            <button type="submit" onclick="redirectToLoginPage()" id="cadastro-btn">Cadastrar</button>
+        </form>
+    </div>
+    <script src="./Js/cadastro.js"></script>
+</body>
+</html>
+
+
